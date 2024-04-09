@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bike Part Picker</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/mainstyles.css">
+    <link rel="stylesheet" href="static/loginsignupstyles.css">
+    <link rel="stylesheet" href="static/textstyles.css">
+    <script src="static/regexfilters.js"></script>
+</head>
+
+<!-- white: rgb(216, 217, 218); grey: rgb(50, 50, 50); dark blue rgb(61, 90, 128); light blue rgb(152, 193, 217) -->
+
+<body>
+
+    <div class="header">
+        <headertext>Bike Part Picker</headertext>
+    </div>
+
+    <div class="loginsignupbox">
+
+        <toptext>Create your account!</toptext>
+
+        <form action="/signup" method="post" onsubmit="return regexcheck()">
+            <input type="text" onkeyup="checkinputs()" class="boxinput inputinvalid" id="email" name="email" placeholder="Email" required="">
+
+            <input type="text" onkeyup="checkinputs()" class="boxinput inputinvalid" id="username" name="username" placeholder="Username" required="">
+
+            <input type="password" onkeyup="checkinputs()" class="boxinput inputinvalid" id="password" name="password" placeholder="Password" required="">
+
+            <errormsg><span style="visibility: hidden">-</span>{{loginerror}}<span style="visibility: hidden">-</span></errormsg>
+
+            <input type="submit" class="submitbutton submitbuttoninvalid" id="submitbutton" value="Sign up">
+        </form>
+
+        <form action="login">
+            <input type="submit" class="altoption" value="Already have an account? Log in.">
+        </form>
+
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+
+</script>
