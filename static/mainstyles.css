@@ -1,0 +1,64 @@
+html * {
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-color: rgb(216, 217, 218);
+}
+
+.header {
+  background-color: rgb(48, 48, 48);
+}
+
+.lowerheader {
+  background-color: rgb(61, 90, 128);
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    'builder mypartlists completedbuilds logout';
+  grid-template-columns: auto auto auto 1fr;
+}
+
+.builder {grid-area: builder; margin-left: 1em; font-family: bebas neue; font-size: 2em; color: rgb(152, 193, 217); background-color: rgb(61, 90, 128); cursor: pointer; border: none; transition-duration: 0.2s}
+.mypartlists {grid-area: mypartlists; margin-left: 1em; font-family: bebas neue; font-size: 2em; color: rgb(152, 193, 217); background-color: rgb(61, 90, 128); cursor: pointer; border: none; transition-duration: 0.2s}
+.completedbuilds {grid-area: completedbuilds; margin-left: 1em; font-family: bebas neue; font-size: 2em; color: rgb(152, 193, 217); background-color: rgb(61, 90, 128); cursor: pointer; border: none; transition-duration: 0.2s}
+.logout {grid-area: logout; margin-right: 1em; font-family: bebas neue; font-size: 2em; color: rgb(152, 193, 217); background-color: rgb(61, 90, 128); cursor: pointer; border: none; transition-duration: 0.2s; right: 0; position: absolute}
+
+.builder:hover {color: rgb(48,48,48)}
+.mypartlists:hover {color: rgb(48,48,48)}
+.completedbuilds:hover {color: rgb(48,48,48)}
+.logout:hover {color: rgb(48,48,48)}
+
+.selectedtab {
+  color: rgb(216, 217, 218)
+}
+
+.footer {
+  background-color: rgb(48,48,48);
+  color: rgb(255,255,255);
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  width: 100%;
+  bottom: 0;
+}
+
+errormsg {
+  font-family: libre franklin;
+  font-size: 1.25em;
+  color: rgb(255, 0, 13);
+  margin: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0.6vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(152, 193, 217);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background: rgb(48,48,48);
+}

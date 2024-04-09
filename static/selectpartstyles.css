@@ -1,0 +1,92 @@
+
+.content {
+  background-color: rgb(216, 217, 218);
+  width: 100%;
+  font-family: libre franklin;
+  display: grid;
+  grid-template-areas:
+    'sidebar partlist';
+  grid-template-columns: 25% auto;
+}
+
+.sidebar {grid-area: sidebar; margin: 3em 0 3em 13em; border-top: rgb(152, 193, 217) solid 0.3em; padding-top: 0.5em}
+.partlist {grid-area: partlist; display: grid; margin: 3em 13em 3em 5em; row-gap: 1em; column-gap: 0.5em; border-top: rgb(61, 90, 128) solid 0.3em; padding-top: 0.5em}
+
+
+
+.subtitle {
+  font-family: bebas neue;
+  font-size: 1.75em;
+  color: rgb(48,48,48);
+  transition-duration: 0.2s;
+}
+
+.clickable:hover {
+  color: rgb(61, 90, 128);
+  cursor: pointer;
+}
+
+.partinfocolumns {
+  max-width: 95%;
+  font-size: 1em;
+  color: rgb(48,48,48);
+  font-weight: bold;
+}
+
+.topcolumntitles {
+  display: grid;
+  margin: 0em 0.5em 0em 0.5em;
+  grid-template-columns: 8% 22% 15% 20% 15% 10% 10%;
+  grid-template-rows: 2em;
+}
+
+.categorygrid {
+  display: grid;
+  margin: 0em 0.5em 0em 0.5em;
+  grid-template-columns: 8% 22% 15% 20% 15% 10% 10%;
+  grid-template-rows: 3em;
+}
+
+.filters {
+  display: grid;
+  row-gap: 0.5em;
+  margin: 0.5em 0em 1em 0em;
+  padding-left: 0.5em;
+}
+
+.filteroption {
+  border: none;
+  font-family: libre franklin;
+  font-size: 1em;
+  color: rgb(48,48,48);
+  font-weight: bold;
+  background-color: rgb(216, 217, 218);
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.filteroption:hover {
+  color: rgb(61, 90, 128)
+}
+
+.selectbutton {
+  background-color: rgb(61, 90, 128);
+  color: rgb(152, 193, 217);
+  border: 0;
+  border-radius: 0.5em;
+  font-family: libre franklin;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  outline: transparent;
+  height: 100%;
+  width: 100%;
+  margin-top: -0.5em;
+  transition: 0.2s;
+}
+
+.selectbutton:hover {
+  background-color: rgb(48, 48, 48);
+  color: rgb(216, 217, 218);
+  border-radius: 1em;
+}

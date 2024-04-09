@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,400;1,700&family=Libre+Franklin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,400;1,700&family=Libre+Franklin&family=Rubik:wght@500&display=swap');
+
+
+
+headertext {
+  margin-left: 0.5em;
+  font-family: bebas neue;
+  font-size: 4em;
+  color: rgb(216, 217, 218);
+}
+
+footertext {
+  margin-left: 0.5em;
+  font-family: roboto;
+  font-size: 0.8em;
+  color: rgb(216, 217, 218);
+}
+
+contenttext {
+  font-family: libre franklin;
+  font-size: 0.5em;
+  color: rgb(216, 217, 218);
+}

@@ -1,0 +1,95 @@
+form {
+    display: inline-block;
+}
+
+body{
+  background-color: rgb(152, 193, 217);
+}
+
+.loginsignupbox {
+  border-radius: 0.5vw;
+  width: 30rem;
+  margin: 5em auto auto auto;
+  padding: 1em;
+  background-color: rgb(50, 50, 50);
+  border-radius: 1em;
+  text-align: center;
+}
+
+toptext {
+  font-family: libre franklin;
+  display: block;
+  margin: 0 auto;
+  font-size: 2em;
+  color: rgb(216, 217, 218);
+}
+
+.boxinput {
+  font-family: libre franklin;
+  font-size: 1.5em;
+  color: rgb(216, 217, 218);
+  margin: 1em auto 1em auto;
+  padding: 0.25em 0.25em 0.25em 0.25em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  display: block;
+  transition-duration: 0.2s;
+  border-bottom: 4px solid rgb(61, 90, 128);
+}
+
+::placeholder {
+  color: rgb(216, 217, 218);
+}
+
+.submitbutton {
+  font-family: libre franklin;
+  font-size: 2em;
+  padding: 0.25em 0.75em 0.25em 0.75em;
+  color: rgb(50, 50, 50);
+  background-color: rgb(216, 217, 218);
+  border: 0;
+  margin: 1em auto 1em auto;
+  display: block;
+  cursor: pointer;
+  border-radius: 0.25em;
+  transition-duration: 0.2s;
+}
+
+.submitbutton:hover {
+  color: rgb(216, 217, 218);
+  background-color: rgb(50, 50, 50);
+  border-radius: 0.5em;
+}
+
+.altoption {
+  font-family: libre franklin;
+  font-size: 1em;
+  color: rgb(216, 217, 218);
+  background-color: rgb(50, 50, 50);
+  border: 0;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.inputinvalid {
+  transition-duration: 0.2s;
+  border-bottom: 4px solid rgb(143, 22, 22);
+}
+
+.inputinvalid:hover {
+  transition-duration: 0.2s;
+  border-bottom: 4px solid rgb(226, 168, 168);
+}
+
+.submitbuttoninvalid {
+  background-color: rgb(143, 22, 22);
+  color: rgb(216, 217, 218);
+  cursor: not-allowed;
+}
+
+.submitbuttoninvalid:hover {
+  background-color: rgb(143, 22, 22);
+  color: rgb(226, 168, 168);
+  border-radius: 0.25em;
+}
