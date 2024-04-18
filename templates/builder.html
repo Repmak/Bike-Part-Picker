@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bike Part Picker</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/mainstyles.css">
+    <link rel="stylesheet" href="static/textstyles.css">
+    <link rel="stylesheet" href="static/builderstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="static/builderfuncs.js"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <headertext>Bike Part Picker</headertext>
+        <headertext style="float: right; margin-right: 0.5em;">Hi, {{username}}</headertext>
+    </div>
+
+    <div class="lowerheader">
+        <form action="builder">
+            <input type="submit" class="builder selectedtab" value="Builder">
+        </form>
+
+        <form action="mypartlists">
+            <input type="submit" class="mypartlists" value="My Part Lists">
+        </form>
+
+        <form action="logout">
+            <input type="submit" class="logout" value="Logout">
+        </form>
+    </div>
+
+    <div class="content">
+
+        <div class="sidebar">
+            <div class="subtitle"><u>Your saved lists</u></div>
+            {% for i in range(0, listoptions|length) %}
+                <form action="selectlistbuilder" method="post">
+                    {% if listoptions[i] == clickedlist[0] %}
+                        <input type="submit" class="listoption selectedlistoption" name="{{listoptions[i][0]}}" value="→ {{listoptions[i][1]}}">
+                    {% else %}
+                        <input type="submit" class="listoption" name="{{listoptions[i][0]}}" value="→ {{listoptions[i][1]}}">
+                    {% endif %}
+                </form>
+            {% endfor %}
+        </div>
+
+
+        <div class="partlist">
+            <div class="topcolumntitles">
+                <div>Part category</div>
+                <div>Part name</div>
+                <div>Last recorded price</div>
+                <div>Link to buy</div>
+                <div></div>
+            </div>
+            <hr>
+
+            <div onclick="framesetclick()" class="subtitle clickable"><u>Frameset</u>&nbsp&nbsp&nbsp<i style="font-size:1em" class="fa">&#xf021;</i></div>
+            <div id="category1" class="categorygrid">
+                <div class="partinfocolumns">Frameset</div>
+                <div class="partinfocolumns" id="1name">No part selected</div>
+                <div class="partinfocolumns" id="1price">N/A</div>
+                <div class="partinfocolumns" id="1retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="1retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="1button" class="selectbutton" name="Frameset" value="Select">
+                </form>
+            </div>
+            <div id="category2" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Frame</div>
+                <div class="partinfocolumns" id="2name">No part selected</div>
+                <div class="partinfocolumns" id="2price">N/A</div>
+                <div class="partinfocolumns" id="2retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="2retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="2button" class="selectbutton" name="Frame" value="Select">
+                </form>
+            </div>
+            <div id="category3" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Fork</div>
+                <div class="partinfocolumns" id="3name">No part selected</div>
+                <div class="partinfocolumns" id="3price">N/A</div>
+                <div class="partinfocolumns" id="3retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="3retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="3button" class="selectbutton" name="Fork" value="Select">
+                </form>
+            </div>
+
+            <hr>
+
+            <div class="subtitle"><u>Handlebar setup</u></div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Stem</div>
+                <div class="partinfocolumns" id="4name">No part selected</div>
+                <div class="partinfocolumns" id="4price">N/A</div>
+                <div class="partinfocolumns" id="4retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="4retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="4button" class="selectbutton" name="Stem" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Handlebar</div>
+                <div class="partinfocolumns" id="5name">No part selected</div>
+                <div class="partinfocolumns" id="5price">N/A</div>
+                <div class="partinfocolumns" id="5retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="5retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="5button" class="selectbutton" name="Handlebar" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Handlebar tape</div>
+                <div class="partinfocolumns" id="6name">No part selected</div>
+                <div class="partinfocolumns" id="6price">N/A</div>
+                <div class="partinfocolumns" id="6retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="6retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="6button" class="selectbutton" name="Handlebar Tape" value="Select">
+                </form>
+            </div>
+
+            <hr>
+
+            <div onclick="wheelsclick()" class="subtitle clickable"><u>Wheelset</u>&nbsp&nbsp&nbsp<i style="font-size:1em" class="fa">&#xf021;</i></div>
+            <div id="category4" class="categorygrid">
+                <div class="partinfocolumns">Wheels</div>
+                <div class="partinfocolumns" id="7name">No part selected</div>
+                <div class="partinfocolumns" id="7price">N/A</div>
+                <div class="partinfocolumns" id="7retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="7retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="7button" class="selectbutton" name="Wheels" value="Select">
+                </form>
+            </div>
+            <div id="category5" class="categorygrid">
+                <div class="partinfocolumns">Tyres</div>
+                <div class="partinfocolumns" id="8name">No part selected</div>
+                <div class="partinfocolumns" id="8price">N/A</div>
+                <div class="partinfocolumns" id="8retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="8retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="8button" class="selectbutton" name="Tyres" value="Select">
+                </form>
+            </div>
+            <div id="category6" class="categorygrid">
+                <div class="partinfocolumns">Inner Tubes</div>
+                <div class="partinfocolumns" id="9name">No part selected</div>
+                <div class="partinfocolumns" id="9price">N/A</div>
+                <div class="partinfocolumns" id="9retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="9retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="9button" class="selectbutton" name="Inner Tubes" value="Select">
+                </form>
+            </div>
+            <div id="category7" class="categorygrid">
+                <div class="partinfocolumns">Rim Tape</div>
+                <div class="partinfocolumns" id="10name">No part selected</div>
+                <div class="partinfocolumns" id="10price">N/A</div>
+                <div class="partinfocolumns" id="10retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="10retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="10button" class="selectbutton" name="Rim Tapes" value="Select">
+                </form>
+            </div>
+            <div id="category8" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Tubeless Wheels</div>
+                <div class="partinfocolumns" id="11name">No part selected</div>
+                <div class="partinfocolumns" id="11price">N/A</div>
+                <div class="partinfocolumns" id="11retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="11retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="11button" class="selectbutton" name="Tubeless Wheels" value="Select">
+                </form>
+            </div>
+            <div id="category9" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Tubeless Tyres</div>
+                <div class="partinfocolumns" id="12name">No part selected</div>
+                <div class="partinfocolumns" id="12price">N/A</div>
+                <div class="partinfocolumns" id="12retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="12retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="12button" class="selectbutton" name="Tubeless Tyres" value="Select">
+                </form>
+            </div>
+            <div id="category10" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Tubeless Sealant</div>
+                <div class="partinfocolumns" id="13name">No part selected</div>
+                <div class="partinfocolumns" id="13price">N/A</div>
+                <div class="partinfocolumns" id="13retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="13retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="13button" class="selectbutton" name="Tubeless Sealant" value="Select">
+                </form>
+            </div>
+            <div id="category11" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Tubeless Rim Tape</div>
+                <div class="partinfocolumns" id="14name">No part selected</div>
+                <div class="partinfocolumns" id="14price">N/A</div>
+                <div class="partinfocolumns" id="14retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="14retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="14button" class="selectbutton" name="Tubeless Rim Tape" value="Select">
+                </form>
+            </div>
+
+            <hr>
+
+            <div onclick="brakesclick()" class="subtitle clickable"><u>Brakes</u>&nbsp&nbsp&nbsp<i style="font-size:1em" class="fa">&#xf021;</i></div>
+            <div id="category12" class="categorygrid">
+                <div class="partinfocolumns">Front Caliper</div>
+                <div class="partinfocolumns" id="15name">No part selected</div>
+                <div class="partinfocolumns" id="15price">N/A</div>
+                <div class="partinfocolumns" id="15retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="15retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="15button" class="selectbutton" name="Front Caliper" value="Select">
+                </form>
+            </div>
+            <div id="category13" class="categorygrid">
+                <div class="partinfocolumns">Rear Caliper</div>
+                <div class="partinfocolumns" id="16name">No part selected</div>
+                <div class="partinfocolumns" id="16price">N/A</div>
+                <div class="partinfocolumns" id="16retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="16retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="16button" class="selectbutton" name="Rear Caliper" value="Select">
+                </form>
+            </div>
+            <div id="category14" class="categorygrid">
+                <div class="partinfocolumns">Brake Cable</div>
+                <div class="partinfocolumns" id="17name">No part selected</div>
+                <div class="partinfocolumns" id="17price">N/A</div>
+                <div class="partinfocolumns" id="17retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="17retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="17button" class="selectbutton" name="Brake Cable" value="Select">
+                </form>
+            </div>
+            <div id="category15" class="categorygrid">
+                <div class="partinfocolumns">Brake Cable Housing</div>
+                <div class="partinfocolumns" id="18name">No part selected</div>
+                <div class="partinfocolumns" id="18price">N/A</div>
+                <div class="partinfocolumns" id="18retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="18retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="18button" class="selectbutton" name="Brake Cable Housing" value="Select">
+                </form>
+            </div>
+            <div id="category16" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Hydraulic Front Caliper</div>
+                <div class="partinfocolumns" id="19name">No part selected</div>
+                <div class="partinfocolumns" id="19price">N/A</div>
+                <div class="partinfocolumns" id="19retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="19retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="19button" class="selectbutton" name="Hydraulic Front Caliper" value="Select">
+                </form>
+            </div>
+            <div id="category17" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Hydraulic Rear Caliper</div>
+                <div class="partinfocolumns" id="20name">No part selected</div>
+                <div class="partinfocolumns" id="20price">N/A</div>
+                <div class="partinfocolumns" id="20retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="20retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="20button" class="selectbutton" name="Hydraulic Rear Caliper" value="Select">
+                </form>
+            </div>
+            <div id="category18" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Hydraulic Brake Lines</div>
+                <div class="partinfocolumns" id="21name">No part selected</div>
+                <div class="partinfocolumns" id="21price">N/A</div>
+                <div class="partinfocolumns" id="21retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="21retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="21button" class="selectbutton" name="Hydraulic Brake Lines" value="Select">
+                </form>
+            </div>
+            <div id="category19" class="categorygrid hiddengrid">
+                <div class="partinfocolumns">Hydraulic Brake Fluid</div>
+                <div class="partinfocolumns" id="22name">No part selected</div>
+                <div class="partinfocolumns" id="22price">N/A</div>
+                <div class="partinfocolumns" id="22retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="22retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="22button" class="selectbutton" name="Hydraulic Brake Fluid" value="Select">
+                </form>
+            </div>
+
+            <hr>
+
+            <div class="subtitle"><u>Drivetrain</u></div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Left Shifter</div>
+                <div class="partinfocolumns" id="23name">No part selected</div>
+                <div class="partinfocolumns" id="23price">N/A</div>
+                <div class="partinfocolumns" id="23retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="23retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="23button" class="selectbutton" name="Left Shifter" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Right Shifter</div>
+                <div class="partinfocolumns" id="24name">No part selected</div>
+                <div class="partinfocolumns" id="24price">N/A</div>
+                <div class="partinfocolumns" id="24retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="24retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="24button" class="selectbutton" name="Right Shifter" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Front Derailleur</div>
+                <div class="partinfocolumns" id="25name">No part selected</div>
+                <div class="partinfocolumns" id="25price">N/A</div>
+                <div class="partinfocolumns" id="25retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="25retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="25button" class="selectbutton" name="Front Derailleur" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Rear Derailleur</div>
+                <div class="partinfocolumns" id="26name">No part selected</div>
+                <div class="partinfocolumns" id="26price">N/A</div>
+                <div class="partinfocolumns" id="26retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="26retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="26button" class="selectbutton" name="Rear Derailleur" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Crankset</div>
+                <div class="partinfocolumns" id="27name">No part selected</div>
+                <div class="partinfocolumns" id="27price">N/A</div>
+                <div class="partinfocolumns" id="27retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="27retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="27button" class="selectbutton" name="Crankset" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Cassette</div>
+                <div class="partinfocolumns" id="28name">No part selected</div>
+                <div class="partinfocolumns" id="28price">N/A</div>
+                <div class="partinfocolumns" id="28retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="28retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="28button" class="selectbutton" name="Cassette" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Bottom Bracket</div>
+                <div class="partinfocolumns" id="29name">No part selected</div>
+                <div class="partinfocolumns" id="29price">N/A</div>
+                <div class="partinfocolumns" id="29retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="29retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="29button" class="selectbutton" name="Bottom Bracket" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Chain</div>
+                <div class="partinfocolumns" id="30name">No part selected</div>
+                <div class="partinfocolumns" id="30price">N/A</div>
+                <div class="partinfocolumns" id="30retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="30retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="30button" class="selectbutton" name="Chain" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Gear Cable</div>
+                <div class="partinfocolumns" id="31name">No part selected</div>
+                <div class="partinfocolumns" id="31price">N/A</div>
+                <div class="partinfocolumns" id="31retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="31retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="31button" class="selectbutton" name="Gear Cable" value="Select">
+                </form>
+            </div>
+            <div class="categorygrid">
+                <div class="partinfocolumns">Gear Cable Housing</div>
+                <div class="partinfocolumns" id="32name">No part selected</div>
+                <div class="partinfocolumns" id="32price">N/A</div>
+                <div class="partinfocolumns" id="32retailernone">N/A</div>
+                <a class="partinfocolumns hiddengrid" target="_blank" id="32retailer" href="url">N/A</a>
+                <form action="selectpart" method="post">
+                    <input type="submit" id="32button" class="selectbutton" name="Gear Cable Housing" value="Select">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <footertext>Copyright © Bike Part Picker. All rights reserved.</footertext>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    var list = {{clickedlist|safe}}
+    var parts = {{parts|safe}}
+    var listoptions = {{listoptions|safe}}
+
+    console.log(list)
+    console.log(parts)
+    console.log(listoptions)
+
+    startup.call(this, parts)
+
+
+</script>

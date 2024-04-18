@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bike Part Picker</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/mainstyles.css">
+    <link rel="stylesheet" href="static/textstyles.css">
+    <link rel="stylesheet" href="static/selectpartstyles.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <headertext>Bike Part Picker</headertext>
+        <headertext style="float: right; margin-right: 0.5em;">Hi, {{username}}</headertext>
+    </div>
+
+    <div class="lowerheader">
+        <form action="builder">
+            <input type="submit" class="builder" value="Builder">
+        </form>
+
+        <form action="mypartlists">
+            <input type="submit" class="mypartlists" value="My Part Lists">
+        </form>
+
+        <form action="logout">
+            <input type="submit" class="logout" value="Logout">
+        </form>
+
+    </div>
+
+    <div class="content">
+        <div class="sidebar">
+            <div class="subtitle"><u>Filters</u></div>
+            <div class="filters">
+                <form action="selectpart" method="post">
+                    <input type="submit" class="filteroption" id="pricerange" name="{{categoryname}}" value="Price range: ">
+                </form>
+            </div>
+        </div>
+        <div class="partlist">
+            <div class="subtitle"><u>Choose your {{categoryname}}</u></div>
+                <div class="topcolumntitles">
+                    <div>Picture</div>
+                    <div>Part name</div>
+                    <div>Last recorded price</div>
+                    <div>Date of last recorded price</div>
+                    <div>Link to buy</div>
+                    <div>Price change</div>
+                    <div></div>
+                </div>
+                <hr>
+            {% for i in range(0, jsparts|length) %}
+                <div class="categorygrid">
+                    <img src="static/Part_Pictures/{{jsparts[i][0]}}.jpg" alt={{jsparts[i][0]}} width="55px"/>
+                    <div class="partinfocolumns">{{jsparts[i][1]}}</div>
+                    <div class="partinfocolumns">{{jsparts[i][4]}}</div>
+                    <div class="partinfocolumns">{{jsparts[i][5]}}</div>
+                    {% if jsparts[i][6] == 0 %}
+                        <div class="partinfocolumns">-</div>
+                    {% else %}
+                        <a class="partinfocolumns" target="_blank" href="{{jsparts[i][6]}}">{{jsparts[i][7]}}</a>
+                    {% endif %}
+                    <div class="partinfocolumns">{{jsparts[i][8]}}</div>
+                    <form action="addpart" method="post">
+                        <input type="submit" class="selectbutton" name="{{jsparts[i][0]}}" value="Add">
+                    </form>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="footer" style="position: absolute">
+        <footertext>Copyright © Bike Part Picker. All rights reserved.</footertext>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+</script>
