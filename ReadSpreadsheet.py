@@ -98,7 +98,7 @@ class updatebrecords:
             self.cursor.execute(sqlstatement)  # INSERTS THE INFORMATION STORED IN bestmatcharray TO THE PriceChanges DATABASE TABLE
             self.cursor.commit()
 
-    def jarowinkler(self, s: str, t: str) -> float:
+    def jarowinkler(self, s, t):
         m, n = len(s), len(t)
         match_distance = max(m, n) // 2 - 1
         s_matches = [False] * m
